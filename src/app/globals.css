@@ -1,3 +1,18 @@
+/* src/app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Elrejtjük a görgetősávot a vízszintes menünél */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
