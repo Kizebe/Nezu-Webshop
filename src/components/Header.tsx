@@ -7,12 +7,13 @@ const masculineFont = Montserrat({ subsets: ['latin'], weight: ['700', '900'] })
 
 export default function Header() {
   return (
+    // A flex-col garantálja, hogy a sávok pontosan egymás alá kerülnek
     <header className="fixed top-0 left-0 w-full z-[100] flex flex-col shadow-2xl">
-      
+
       {/* 1. MEGNÖVELT ARANY VIP SÁV (Fix 40px magasság) */}
       <div className="w-full h-10 animate-gold-vip flex items-center border-b border-black/5 relative z-[101]">
         <div className="max-w-[1600px] mx-auto w-full px-10 grid grid-cols-3 items-center">
-          
+
           {/* BAL OLDAL */}
           <div className="text-left">
             <span className={`${masculineFont.className} text-black text-[10px] uppercase tracking-[0.4em] font-black`}>
@@ -43,7 +44,7 @@ export default function Header() {
       {/* 2. KIDOLGOZOTT FEKETE MENÜSÁV (Érintetlen belső tartalommal) */}
       <nav className="w-full bg-black py-4 relative z-[100]">
         <div className="max-w-[1600px] mx-auto px-10 flex justify-between items-center">
-          
+
           {/* LOGÓ */}
           <Link href="/" className="text-white font-black text-2xl tracking-tighter italic hover:opacity-80 transition-opacity">
             Nezu.hu
@@ -64,8 +65,24 @@ export default function Header() {
 
           {/* IKONOK */}
           <div className="flex items-center gap-6">
+            {/* Kereső */}
             <button className="text-white hover:text-[#D4AF37] transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </button>
+            {/* Profil */}
             <button className="text-white hover:text-[#D4AF37] transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </button>
+            {/* Kosár */}
+            <button className="text-white hover:text-[#D4AF37] transition-colors relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <span className="absolute -top-2 -right-2 bg-[#D4AF37] text-black text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </button>
+          </div>
+
+        </div>
+      </nav>
+
+    </header>
+  );
+}
