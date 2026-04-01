@@ -3,6 +3,7 @@
 import Header from '@/components/Header';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 
+// Betűtípusok stabil konfigurálása - EGYSZERI DEFINÍCIÓ
 const feminineFont = Playfair_Display({ subsets: ['latin'], weight: ['400', '700'], style: ['italic'] });
 const masculineFont = Montserrat({ subsets: ['latin'], weight: ['700', '900'] });
 
@@ -31,42 +32,48 @@ export default function Home() {
         /* 🎯 SEBÉSZI ILLESZKEDÉS: A fekete menü (Header) hajszálpontosan az arany sáv alatt kezdődik */
         header, [class*="fixed top-0"] {
           top: 40px !important; 
-          height: 80px !important; /* Fixáljuk a magasságát is a biztonság kedvéért */
+          height: 80px !important; 
         }
       `}</style>
 
       {/* 1. VIP ARANY SÁV - Fix 40px magasság (h-10) */}
       <div className="fixed top-0 left-0 w-full h-10 z-[150] animate-gold-vip flex items-center shadow-sm">
         <div className="max-w-[1600px] mx-auto w-full px-10 grid grid-cols-3 items-center">
+            
+            {/* BAL OLDAL */}
             <div className="text-left">
               <span className={`${masculineFont.className} text-black text-[9px] uppercase tracking-[0.4em] font-black`}>
                 Nezu VIP Program
               </span>
             </div>
+
+            {/* KÖZÉP */}
             <div className="text-center">
               <span className={`${masculineFont.className} text-black text-[9px] uppercase tracking-[0.15em] font-black`}>
                 Belépés csak Tagoknak!
               </span>
             </div>
+
+            {/* JOBB OLDAL */}
             <div className="text-right flex items-center justify-end gap-3">
               <span className={`${masculineFont.className} text-black/70 text-[8px] uppercase tracking-wider font-bold`}>
                 Szeretnél VIP tag lenni?
               </span>
-              <button className={`${masculineFont.className} bg-black text-[#D4AF37] text-[8px] px-2.5 py-1 rounded-sm font-black uppercase tracking-tighter`}>
+              <button className={`${masculineFont.className} bg-black text-[#D4AF37] text-[8px] px-2.5 py-1 rounded-sm font-black uppercase tracking-tighter hover:bg-zinc-800 transition-all shadow-md`}>
                 Kattints ide
               </button>
             </div>
+
         </div>
       </div>
 
-      {/* 2. FEKETE MENÜ - Résmentesen illeszkedik az arany sáv alá */}
+      {/* 2. FEKETE MENÜ - Résmentesen az arany sáv alá kényszerítve */}
       <Header />
 
-      {/* 3. HERO BANNER - pt-44 (176px) behúzás tökéletesen kihozza a fejléc alól */}
+      {/* 3. HERO BANNER */}
       <section className="w-full bg-white pt-12 pb-16 border-b border-zinc-50 relative">
         <div className="max-w-[1550px] mx-auto px-12 flex flex-row items-center justify-between h-[220px] md:h-[260px]">
           
-          {/* BAL OLDAL - Apró örömök */}
           <div className="flex-[1.2] pl-20 text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-pink-500 mb-2 block italic">Pure & Effective</span>
             <h1 className={`${feminineFont.className} text-4xl md:text-[4.2rem] text-zinc-900 leading-[1.05] mb-7 italic`}>
@@ -79,7 +86,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* JOBB OLDAL - JÁTÉKBARLANG */}
           <div className="flex-1 flex justify-center pr-12 scale-90">
             <div className="w-full max-w-[460px] bg-gradient-to-br from-purple-700 to-pink-500 p-8 rounded-[50px] shadow-2xl relative overflow-hidden border-4 border-white/20 text-center">
               <div className="relative z-10 flex flex-col items-center">
@@ -93,34 +99,4 @@ export default function Home() {
                   {games.map((game, i) => (
                     <button 
                       key={i}
-                      className="bg-black/20 hover:bg-white text-white hover:text-purple-700 py-3.5 px-4 rounded-2xl transition-all duration-300 backdrop-blur-md border border-white/10 flex flex-col items-start"
-                    >
-                      <span className={`${masculineFont.className} text-[9px] uppercase tracking-widest font-black mb-1 text-left`}>
-                        {game.name}
-                      </span>
-                      <span className="text-[7px] opacity-70 uppercase font-bold tracking-tighter">
-                        {game.status}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. TERMÉKRÁCS */}
-      <section className="max-w-[1600px] mx-auto px-6 py-12 bg-white">
-        <div className="flex items-center justify-between mb-16 px-10">
-            <div className="h-[1px] flex-1 bg-zinc-100"></div>
-            <h2 className={`${masculineFont.className} text-[10px] uppercase tracking-[0.5em] text-zinc-300 mx-10`}>Nezu Selection</h2>
-            <div className="h-[1px] flex-1 bg-zinc-100"></div>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="group cursor-pointer flex flex-col items-center">
-              <div className="aspect-[4/5] w-full bg-zinc-300/60 mb-5 relative overflow-hidden rounded-[2.5rem] border border-zinc-200 transition-all duration-700 group-hover:shadow-2xl group-hover:-translate-y-3">
-              </div>
-              <div className="text-center px-2">
-                <h3 className={`${mas
+                      className="bg-black
