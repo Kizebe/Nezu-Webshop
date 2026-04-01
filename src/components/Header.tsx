@@ -1,117 +1,73 @@
 'use client';
 
-import { useState } from 'react';
-import { 
-  Search, Menu, Percent, ChevronDown, 
-  User, Heart, ShoppingBag, Headset 
-} from 'lucide-react';
+import { Montserrat } from 'next/font/google';
+import Link from 'next/link';
+
+const masculineFont = Montserrat({ subsets: ['latin'], weight: ['700', '900'] });
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const menuItems = [
-    { name: 'Gyerekruházat', href: '#' },
-    { name: 'Otthon és lakberendezés', href: '#' },
-    { name: 'Pet Shop', href: '#', icon: '🐾' },
-    { name: 'BBQ & Whiskey esszenciák', href: '#' },
-    { name: 'Ajándéktárgyak', href: '#' },
-    { name: 'Kiárusítás', href: '#', isSale: true },
-  ];
-
   return (
-    <div className="w-full fixed top-0 z-50 bg-black">
-      <div className="bg-[#D4AF37] text-black text-[10px] py-1 text-center font-bold uppercase tracking-[0.2em]">
-        Nezu Protocol - Member Access Only
+    // A flex-col garantálja, hogy a sávok pontosan egymás alá kerülnek
+    <header className="fixed top-0 left-0 w-full z-[100] flex flex-col shadow-2xl">
+      
+      {/* 1. AZ ARANY VIP SÁV (40px magas) */}
+      <div className="w-full h-[40px] relative overflow-hidden flex items-center border-b border-black/10">
+        {/* Animált háttér */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] via-[#FFF5D1] to-[#D4AF37] bg-[length:200%_auto] animate-[goldShine_6s_infinite_linear]"></div>
+        
+        {/* Szöveges tartalom */}
+        <div className="relative z-10 w-full max-w-[1600px] mx-auto px-10 grid grid-cols-3 items-center">
+          
+          <div className="text-left">
+            <span className={`${masculineFont.className} text-black text-[10px] uppercase tracking-[0.4em] font-black`}>
+              Nezu VIP Program
+            </span>
+          </div>
+
+          <div className="text-center">
+            <span className={`${masculineFont.className} text-black text-[10px] uppercase tracking-[0.15em] font-black`}>
+              Belépés csak Tagoknak!
+            </span>
+          </div>
+
+          <div className="text-right flex items-center justify-end gap-3">
+            <span className={`${masculineFont.className} text-black/80 text-[9px] uppercase tracking-wider font-bold`}>
+              Szeretnél VIP tag lenni?
+            </span>
+            <button className={`${masculineFont.className} bg-black text-[#D4AF37] text-[9px] px-3 py-1 rounded-sm font-black uppercase tracking-tighter hover:bg-zinc-800 transition-all shadow-md`}>
+              Kattints ide
+            </button>
+          </div>
+
+        </div>
       </div>
 
-      <header className="border-b border-gray-800">
-        <div className="flex items-center justify-between px-6 py-4 gap-8">
-          <div className="text-4xl font-black italic tracking-tighter whitespace-nowrap text-white">
+      {/* 2. A FEKETE MENÜ (Pontosan az arany sáv alatt indul) */}
+      <nav className="w-full bg-black py-4">
+        <div className="max-w-[1600px] mx-auto px-10 flex justify-between items-center">
+          
+          {/* IDE ILLESZD VISSZA A SAJÁT LOGÓDAT ÉS A MENÜPONTJAIDAT */}
+          
+          <div className="text-[#D4AF37] font-black text-2xl tracking-tighter italic">
             Nezu.hu
           </div>
           
-          <div className="flex-1 max-w-xl relative ml-4">
-            <input 
-              type="text" 
-              placeholder="Keresés..." 
-              className="w-full bg-[#1a1a1a] border border-gray-700 py-2 px-10 text-sm rounded-sm focus:outline-none focus:border-green-600 text-white"
-            />
-            <Search className="absolute left-3 top-2.5 text-gray-500 w-4 h-4" />
+          <div className="flex gap-6 text-white text-xs uppercase font-bold tracking-widest">
+            {/* Példa menüpontok, cseréld a sajátodra */}
+            <span>Kategóriák</span>
+            <span>Újdonságok</span>
           </div>
 
-          <div className="flex items-center gap-6 text-gray-300">
-            <div className="flex flex-col items-center cursor-pointer hover:text-white">
-              <User size={20} />
-              <span className="text-[9px] mt-1 font-bold uppercase">Belépés</span>
-            </div>
-            <div className="flex flex-col items-center cursor-pointer hover:text-white relative">
-              <ShoppingBag size={20} />
-              <span className="text-[9px] mt-1 font-bold uppercase">Kosár</span>
-              <span className="absolute -top-1 -right-1 bg-green-600 text-[8px] px-1 rounded-full text-white font-bold">0</span>
-            </div>
-            <div className="flex flex-col items-center cursor-pointer hover:text-white">
-              <Headset size={20} />
-              <span className="text-[9px] mt-1 font-bold uppercase">Kapcsolat</span>
-            </div>
+          <div className="flex gap-4 text-white">
+             {/* Keresés, Profil, Kosár ikonok */}
+             <span>🔍</span>
+             <span>👤</span>
+             <span>🛒</span>
           </div>
+
         </div>
+      </nav>
 
-        {/* A JAVÍTOTT NAV SÁV (overflow-visible az 'auto' helyett) */}
-        <nav className="flex items-center justify-between px-8 py-3 whitespace-nowrap text-[12.5px] uppercase font-bold border-t border-gray-900 bg-black relative overflow-visible">
-          
-          <div className="relative">
-            <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center gap-2 transition-colors hover:text-green-500 text-white"
-            >
-              <Menu size={18} /> Kategóriák
-            </button>
-            
-            {isOpen && (
-              <>
-                {/* Kattintás bárhová máshová bezárja a menüt */}
-                <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)}></div>
-                
-                {/* A lenyíló lista - Most már látszódnia kell! */}
-                <div className="absolute top-full left-0 mt-3 w-64 bg-black border border-gray-800 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-50 py-2">
-                  <div className="px-4 py-2 text-[10px] text-gray-500 border-b border-gray-900 mb-2 tracking-widest">NAVIGÁCIÓ</div>
-                  {menuItems.map((item, idx) => (
-                    <a 
-                      key={idx} 
-                      href={item.href}
-                      className={`block px-5 py-3 hover:bg-zinc-900 transition-colors border-l-2 border-transparent hover:border-green-600 ${item.isSale ? 'text-red-500' : 'text-gray-200'}`}
-                    >
-                      <div className="flex items-center justify-between italic">
-                        <span>{item.name} {item.icon && <span className="ml-2">{item.icon}</span>}</span>
-                        {item.isSale && <Percent size={12} />}
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-
-          {menuItems.map((item, idx) => (
-            <a 
-              key={idx} 
-              href={item.href} 
-              className={`transition-colors hover:text-green-500 flex items-center gap-1 ${item.isSale ? 'text-red-500' : 'text-gray-100'}`}
-            >
-              {item.name}
-              {item.icon && <span className="text-sm">{item.icon}</span>}
-              {item.isSale && <Percent size={14} />}
-            </a>
-          ))}
-        </nav>
-
-        {/* JAVÍTOTT Játék a kedvezményekért sáv */}
-<div className="bg-[#0a0a0a] border-t border-green-900/10 py-2.5 text-center text-white"> {/* py-1 helyett 2.5 */}
-  <a href="/game" className="text-[12px] text-green-500 tracking-[0.5em] font-black animate-pulse uppercase"> {/* text-10 helyett 12 */}
-    ⚡ Játék a kedvezményekért ⚡
-  </a>
-</div>
-      </header>
-    </div>
+    </header>
   );
 }
