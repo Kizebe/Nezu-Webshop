@@ -26,7 +26,6 @@ export default function Header() {
       
       {/* 1. VIP SÁV */}
       <div className="bg-[#D4AF37] w-full py-2 flex items-center">
-        {/* ITT A MÓDOSÍTÁS: px-[5cm] a két szélén lévő 5-5 cm margóért, a grid-cols-3 pedig szimmetrikusan elosztja a maradékot */}
         <div className="max-w-[1600px] mx-auto w-full px-[5cm] grid grid-cols-3 items-center">
           
           <div className="text-left">
@@ -135,10 +134,10 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* JAVÍTOTT Játék a kedvezményekért sáv */}
+        {/* HÍRLEVÉL SÁV */}
         <div className="bg-[#0a0a0a] border-t border-green-900/10 py-2.5 text-center text-white">
-          <a href="/game" className="text-[12px] text-green-500 tracking-[0.5em] font-black animate-pulse uppercase">
-            ⚡ Játék a kedvezményekért ⚡
+          <a href="#newsletter" className="text-[12px] text-green-500 tracking-[0.2em] font-black animate-pulse uppercase">
+            Íratkozz fel a hírlevelünkre, ne maradj le a kedvezményekről!
           </a>
         </div>
       </header>
