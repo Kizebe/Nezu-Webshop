@@ -1,117 +1,46 @@
 'use client';
 
-import { useState } from 'react';
-import { 
-  Search, Menu, Percent, ChevronDown, 
-  User, Heart, ShoppingBag, Headset 
-} from 'lucide-react';
+import { Montserrat } from 'next/font/google';
+
+const masculineFont = Montserrat({ subsets: ['latin'], weight: ['700', '900'] });
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const menuItems = [
-    { name: 'Gyerekruházat', href: '#' },
-    { name: 'Otthon és lakberendezés', href: '#' },
-    { name: 'Pet Shop', href: '#', icon: '🐾' },
-    { name: 'BBQ & Whiskey esszenciák', href: '#' },
-    { name: 'Ajándéktárgyak', href: '#' },
-    { name: 'Kiárusítás', href: '#', isSale: true },
-  ];
-
   return (
-    <div className="w-full fixed top-0 z-50 bg-black">
-      <div className="bg-[#D4AF37] text-black text-[10px] py-1 text-center font-bold uppercase tracking-[0.2em]">
-        Nezu Protocol - Member Access Only
-      </div>
-
-      <header className="border-b border-gray-800">
-        <div className="flex items-center justify-between px-6 py-4 gap-8">
-          <div className="text-4xl font-black italic tracking-tighter whitespace-nowrap text-white">
-            Nezu.hu
-          </div>
+    <header className="fixed top-0 left-0 w-full z-[100]">
+      {/* 1. MEGNÖVELT ARANY VIP SÁV (40px) */}
+      <div className="w-full h-10 animate-gold-vip flex items-center shadow-md border-b border-black/10">
+        <div className="max-w-[1600px] mx-auto w-full px-10 grid grid-cols-3 items-center">
           
-          <div className="flex-1 max-w-xl relative ml-4">
-            <input 
-              type="text" 
-              placeholder="Keresés..." 
-              className="w-full bg-[#1a1a1a] border border-gray-700 py-2 px-10 text-sm rounded-sm focus:outline-none focus:border-green-600 text-white"
-            />
-            <Search className="absolute left-3 top-2.5 text-gray-500 w-4 h-4" />
+          <div className="text-left">
+            <span className={`${masculineFont.className} text-black text-[9px] uppercase tracking-[0.4em] font-black`}>
+              Nezu VIP Program
+            </span>
           </div>
 
-          <div className="flex items-center gap-6 text-gray-300">
-            <div className="flex flex-col items-center cursor-pointer hover:text-white">
-              <User size={20} />
-              <span className="text-[9px] mt-1 font-bold uppercase">Belépés</span>
-            </div>
-            <div className="flex flex-col items-center cursor-pointer hover:text-white relative">
-              <ShoppingBag size={20} />
-              <span className="text-[9px] mt-1 font-bold uppercase">Kosár</span>
-              <span className="absolute -top-1 -right-1 bg-green-600 text-[8px] px-1 rounded-full text-white font-bold">0</span>
-            </div>
-            <div className="flex flex-col items-center cursor-pointer hover:text-white">
-              <Headset size={20} />
-              <span className="text-[9px] mt-1 font-bold uppercase">Kapcsolat</span>
-            </div>
+          <div className="text-center">
+            <span className={`${masculineFont.className} text-black text-[9px] uppercase tracking-[0.15em] font-black`}>
+              Belépés csak Tagoknak!
+            </span>
+          </div>
+
+          <div className="text-right flex items-center justify-end gap-3">
+            <span className={`${masculineFont.className} text-black/70 text-[8px] uppercase tracking-wider font-bold`}>
+              Szeretnél VIP tag lenni?
+            </span>
+            <button className="bg-black text-[#D4AF37] text-[8px] px-2.5 py-1 rounded-sm font-black uppercase tracking-tighter hover:bg-zinc-800 transition-all">
+              Kattints ide
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* A JAVÍTOTT NAV SÁV (overflow-visible az 'auto' helyett) */}
-        <nav className="flex items-center justify-between px-8 py-3 whitespace-nowrap text-[12.5px] uppercase font-bold border-t border-gray-900 bg-black relative overflow-visible">
-          
-          <div className="relative">
-            <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center gap-2 transition-colors hover:text-green-500 text-white"
-            >
-              <Menu size={18} /> Kategóriák
-            </button>
-            
-            {isOpen && (
-              <>
-                {/* Kattintás bárhová máshová bezárja a menüt */}
-                <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)}></div>
-                
-                {/* A lenyíló lista - Most már látszódnia kell! */}
-                <div className="absolute top-full left-0 mt-3 w-64 bg-black border border-gray-800 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-50 py-2">
-                  <div className="px-4 py-2 text-[10px] text-gray-500 border-b border-gray-900 mb-2 tracking-widest">NAVIGÁCIÓ</div>
-                  {menuItems.map((item, idx) => (
-                    <a 
-                      key={idx} 
-                      href={item.href}
-                      className={`block px-5 py-3 hover:bg-zinc-900 transition-colors border-l-2 border-transparent hover:border-green-600 ${item.isSale ? 'text-red-500' : 'text-gray-200'}`}
-                    >
-                      <div className="flex items-center justify-between italic">
-                        <span>{item.name} {item.icon && <span className="ml-2">{item.icon}</span>}</span>
-                        {item.isSale && <Percent size={12} />}
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-
-          {menuItems.map((item, idx) => (
-            <a 
-              key={idx} 
-              href={item.href} 
-              className={`transition-colors hover:text-green-500 flex items-center gap-1 ${item.isSale ? 'text-red-500' : 'text-gray-100'}`}
-            >
-              {item.name}
-              {item.icon && <span className="text-sm">{item.icon}</span>}
-              {item.isSale && <Percent size={14} />}
-            </a>
-          ))}
-        </nav>
-
-        {/* JAVÍTOTT Játék a kedvezményekért sáv */}
-<div className="bg-[#0a0a0a] border-t border-green-900/10 py-2.5 text-center text-white"> {/* py-1 helyett 2.5 */}
-  <a href="/game" className="text-[12px] text-green-500 tracking-[0.5em] font-black animate-pulse uppercase"> {/* text-10 helyett 12 */}
-    ⚡ Játék a kedvezményekért ⚡
-  </a>
-</div>
-      </header>
-    </div>
+      {/* 2. FEKETE MENÜSOR - Adunk neki egy 2px GAP-et (margin-top), hogy ne érjenek össze */}
+      <nav className="bg-black w-full py-4 mt-[2px] shadow-xl">
+        {/* Itt van a logód és a menüpontjaid... */}
+        <div className="max-w-[1600px] mx-auto px-10 flex justify-between items-center">
+           {/* ... a meglévő menü kódod ... */}
+        </div>
+      </nav>
+    </header>
   );
 }
