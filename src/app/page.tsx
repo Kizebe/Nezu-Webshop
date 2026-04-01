@@ -27,14 +27,14 @@ export default function Home() {
           background-size: 200% auto;
           animation: goldShine 6s infinite linear;
         }
-        /* Kényszerítjük a Header-t, hogy az arany sáv ALATT kezdődjön */
+        /* KRITIKUS JAVÍTÁS: A fekete fejlécet az arany sáv alá kényszerítjük */
         header {
-          top: 36px !important; /* Pontosan az arany sáv magassága */
+          top: 36px !important;
         }
       `}</style>
 
-      {/* 1. AZ EGYETLEN VIP ARANY SÁV - 36px magas (kb. 50%-os növekedés az eredetihez képest) */}
-      <div className="fixed top-0 left-0 w-full h-9 z-[110] animate-gold-vip shadow-sm flex items-center">
+      {/* 1. AZ EGYETLEN VIP ARANY SÁV - 36px magas (h-9) */}
+      <div className="fixed top-0 left-0 w-full h-9 z-[110] animate-gold-vip shadow-sm flex items-center border-b border-black/5">
         <div className="max-w-[1600px] mx-auto w-full px-10 grid grid-cols-3 items-center">
             
             {/* BAL OLDAL */}
@@ -56,7 +56,7 @@ export default function Home() {
               <span className={`${masculineFont.className} text-black/70 text-[8px] uppercase tracking-wider font-bold`}>
                 Szeretnél VIP tag lenni?
               </span>
-              <button className={`${masculineFont.className} bg-black text-[#D4AF37] text-[8px] px-2.5 py-1 rounded-sm font-black uppercase hover:bg-zinc-800 transition-all tracking-tighter`}>
+              <button className={`${masculineFont.className} bg-black text-[#D4AF37] text-[8px] px-2.5 py-1 rounded-sm font-black uppercase hover:bg-zinc-800 transition-all tracking-tighter shadow-sm`}>
                 Kattints ide
               </button>
             </div>
@@ -65,11 +65,10 @@ export default function Home() {
 
       <Header />
 
-      {/* 2. HERO BANNER - Most már elegáns távolságra a fejléctől */}
+      {/* 2. HERO BANNER - Megfelelő távolság és arányok */}
       <section className="w-full bg-white pt-20 pb-12 border-b border-zinc-50 relative">
         <div className="max-w-[1550px] mx-auto px-12 flex flex-row items-center justify-between h-[220px] md:h-[250px]">
           
-          {/* BAL OLDAL - Apró örömök (+15% méret, eltolva) */}
           <div className="flex-[1.2] pl-20 text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-pink-500 mb-2 block italic">Pure & Effective Logistics</span>
             <h1 className={`${feminineFont.className} text-4xl md:text-[4rem] text-zinc-900 leading-[1.05] mb-7 italic`}>
@@ -82,9 +81,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* JOBB OLDAL - JÁTÉKBARLANG (2x2 Dashboard, 20% kisebb) */}
           <div className="flex-1 flex justify-center pr-12 scale-90">
-            <div className="w-full max-w-[460px] bg-gradient-to-br from-purple-700 to-pink-500 p-8 rounded-[50px] shadow-2xl relative overflow-hidden border-4 border-white/20">
+            <div className="w-full max-w-[460px] bg-gradient-to-br from-purple-700 to-pink-500 p-8 rounded-[50px] shadow-2xl relative overflow-hidden border-4 border-white/20 text-center">
               <div className="relative z-10 flex flex-col items-center">
                 <h2 className={`${feminineFont.className} text-white text-3xl italic tracking-tighter uppercase mb-2`}>
                   Nezu Játékbarlang
@@ -131,4 +129,12 @@ export default function Home() {
                 <h3 className={`${masculineFont.className} text-[11px] text-zinc-800 leading-tight mb-1 uppercase tracking-tight`}>
                   Nezu Item #{i+1}
                 </h3>
-                <span className="text-lg font-black text-
+                <span className="text-lg font-black text-zinc-900 italic tracking-tighter">9.990 Ft</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
