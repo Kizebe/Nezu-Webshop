@@ -6,9 +6,9 @@ const masculineFont = Montserrat({ subsets: ['latin'], weight: ['700', '900'] })
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full z-[100]">
-      {/* 1. MEGNÖVELT ARANY VIP SÁV (40px) */}
-      <div className="w-full h-10 animate-gold-vip flex items-center shadow-md border-b border-black/10">
+    <header className="fixed top-0 left-0 w-full z-[100] flex flex-col">
+      {/* MEGNÖVELT ARANY SÁV - 44px magas, ide kerül a szöveg */}
+      <div className="w-full h-11 animate-gold-vip flex items-center shadow-md border-b border-black/5">
         <div className="max-w-[1600px] mx-auto w-full px-10 grid grid-cols-3 items-center">
           
           <div className="text-left">
@@ -34,11 +34,12 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 2. FEKETE MENÜSOR - Adunk neki egy 2px GAP-et (margin-top), hogy ne érjenek össze */}
-      <nav className="bg-black w-full py-4 mt-[2px] shadow-xl">
-        {/* Itt van a logód és a menüpontjaid... */}
+      {/* FEKETE NAVIGÁCIÓ - Pontosan az arany sáv alá illeszkedik, nulla rálógás */}
+      <nav className="bg-black w-full py-5 shadow-2xl">
         <div className="max-w-[1600px] mx-auto px-10 flex justify-between items-center">
-           {/* ... a meglévő menü kódod ... */}
+          {/* Itt a logód (Nezu.hu) és a menüpontjaid... */}
+          <div className="text-white font-black text-2xl tracking-tighter italic">Nezu.hu</div>
+          {/* ...többi menüelem... */}
         </div>
       </nav>
     </header>
