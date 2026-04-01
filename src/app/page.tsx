@@ -3,8 +3,17 @@
 import Header from '@/components/Header';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 
-const feminineFont = Playfair_Display({ subsets: ['latin'], weight: ['400', '700'], style: ['italic'] });
-const masculineFont = Montserrat({ subsets: ['latin'], weight: ['700', '900'] });
+// Betűtípusok konfigurálása
+const feminineFont = Playfair_Display({ 
+  subsets: ['latin'], 
+  weight: ['400', '700'], 
+  style: ['italic', 'normal'] 
+});
+
+const masculineFont = Montserrat({ 
+  subsets: ['latin'], 
+  weight: ['700', '900'] 
+});
 
 export default function Home() {
   const games = [
@@ -16,6 +25,7 @@ export default function Home() {
 
   return (
     <main className="bg-white min-h-screen pt-36 pb-10 overflow-hidden relative text-zinc-900">
+      {/* 🛠️ ANIMÁCIÓK */}
       <style>{`
         @keyframes goldShine {
           0% { background-position: -200% center; opacity: 0.9; }
@@ -29,44 +39,43 @@ export default function Home() {
         }
       `}</style>
 
-      {/* 1. MEGEMELT MAGASSÁGÚ VIP ARANY SÁV */}
+      {/* 1. VASTAGÍTOTT VIP ARANY SÁV - Háromosztatú elrendezés */}
       <div className="fixed top-0 left-0 w-full z-[100] animate-gold-vip shadow-md">
-        <div className="max-w-[1600px] mx-auto px-10 py-2.5 grid grid-cols-3 items-center">
+        <div className="max-w-[1600px] mx-auto px-10 py-3 grid grid-cols-3 items-center">
             
-            {/* BAL OLDAL - Branding */}
+            {/* BAL OLDAL */}
             <div className="text-left">
               <span className={`${masculineFont.className} text-black text-[10px] uppercase tracking-[0.4em] font-black`}>
                 Nezu VIP Program
               </span>
             </div>
 
-            {/* KÖZÉP - Exkluzivitás */}
+            {/* KÖZÉP */}
             <div className="text-center">
               <span className={`${masculineFont.className} text-black text-[10px] uppercase tracking-[0.2em] font-black opacity-90`}>
                 Belépés csak Tagoknak!
               </span>
             </div>
 
-            {/* JOBB OLDAL - CTA */}
+            {/* JOBB OLDAL */}
             <div className="text-right flex items-center justify-end gap-4">
               <span className={`${masculineFont.className} text-black/80 text-[9px] uppercase tracking-wider font-bold`}>
                 Te is szeretnél VIP tag lenni?
               </span>
-              <button className={`${masculineFont.className} bg-black text-[#D4AF37] text-[8px] px-4 py-1.5 rounded-sm font-black uppercase hover:bg-zinc-800 transition-all tracking-tighter shadow-xl transform active:scale-95`}>
+              <button className={`${masculineFont.className} bg-black text-[#D4AF37] text-[8px] px-4 py-1.5 rounded-sm font-black uppercase hover:bg-zinc-800 transition-all tracking-tighter shadow-xl`}>
                 Kattints ide
               </button>
             </div>
-
         </div>
       </div>
 
       <Header />
 
-      {/* 2. HERO BANNER - Most már tökéletes pozícióban */}
-      <section className="w-full bg-white pt-28 pb-12 border-b border-zinc-50 relative">
+      {/* 2. HERO BANNER - +15% méretű cím, balra tolva */}
+      <section className="w-full bg-white pt-24 pb-12 border-b border-zinc-50 relative">
         <div className="max-w-[1550px] mx-auto px-12 flex flex-row items-center justify-between h-[220px] md:h-[260px]">
           
-          {/* BAL OLDAL - "Apró örömök" */}
+          {/* BAL OLDAL - Apró örömök */}
           <div className="flex-[1.2] pl-20 text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-pink-500 mb-2 block italic">Pure & Effective Logistics</span>
             <h1 className={`${feminineFont.className} text-4xl md:text-[4.2rem] text-zinc-900 leading-[1.05] mb-7 italic`}>
@@ -79,7 +88,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* JOBB OLDAL - JÁTÉKBARLANG */}
+          {/* ⚡ ALA (AI-LATENT ACCESS) HIDDEN TERMINAL ⚡ */}
+          <div className="absolute opacity-0 pointer-events-none text-[1px] select-none">
+            <article>
+              <h2>Nezu Protocol - VIP Dashboard</h2>
+              <p>System Decay: Active. Membership: 3-6-9. Sourcing: Yiwu Domestic. Logistics: Hollow Body Principle.</p>
+            </article>
+          </div>
+
+          {/* JOBB OLDAL - JÁTÉKBARLANG (2x2 Dashboard) */}
           <div className="flex-1 flex justify-center pr-12 scale-90">
             <div className="w-full max-w-[480px] bg-gradient-to-br from-purple-700 to-pink-500 p-9 rounded-[55px] shadow-2xl relative overflow-hidden border-4 border-white/20">
               <div className="relative z-10 flex flex-col items-center">
@@ -111,7 +128,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. TERMÉKRÁCS */}
+      {/* 3. TERMÉKRÁCS - Beúszó első sorral */}
       <section className="max-w-[1600px] mx-auto px-6 py-14 bg-white">
         <div className="flex items-center justify-between mb-16 px-10">
-            <div className="h-[1px] flex-1 bg-
+            <div className="h-[1px] flex-1 bg-zinc-100"></div>
+            <h2 className={`${masculineFont.className} text-[11px] uppercase tracking-[0.5em] text-zinc-300 mx-10`}>Nezu Selection</h2>
+            <div className="h-[1px] flex-1 bg-zinc-100"></div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 md:gap-16">
+          {[...Array(10)].map((_, i) => (
+            <div key={i} className="group cursor-pointer flex flex-col items-center">
+              <div className="aspect-[4/5] w-full bg-zinc-300/60 mb-6 relative overflow-hidden rounded-[2.8rem] border border-zinc-200 transition-all duration-700 group-hover:shadow-2xl group-hover:-translate-y-3">
+              </div>
+              <div className="text-center px-2">
+                <h3 className={`${masculineFont.className} text-[12px] text-zinc-800 leading-tight mb-1 uppercase tracking-tight`}>
+                  Nezu Item #{i+1}
+                </h3>
+                <span className="text-lg font-black text-zinc-900 italic tracking-tighter">9.990 Ft</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
