@@ -1,4 +1,4 @@
-'use client'; // Ez kötelező az interaktív stílusok és animációk miatt
+'use client';
 
 import Header from '@/components/Header';
 
@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <main className="bg-white min-h-screen pt-44 pb-10">
-      {/* 100% BIZTOS STÍLUS ÉS ANIMÁCIÓ DEFINÍCIÓ */}
+      {/* TISZTA ANIMÁCIÓS BLOKK */}
       <style>{`
         @keyframes softGlow {
           0% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.2); border-color: #D4AF37; }
@@ -31,13 +31,13 @@ export default function Home() {
       <section className="w-full bg-white pt-2 pb-0 border-b border-zinc-100">
         <div className="max-w-[1500px] mx-auto px-12 flex flex-row items-center justify-center gap-12 h-[220px] md:h-[280px]">
           
-          {/* BAL OLDAL - Mélyen beljebb (pl-32) és középen */}
+          {/* BAL OLDAL - Beljebb húzva (pl-32) és középre igazítva */}
           <div className="flex-1 pl-32 text-center">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-pink-500 mb-2 block italic text-center">Exkluzív Válogatás</span>
-            <h1 className="text-3xl md:text-4xl font-black tracking-tighter leading-none mb-3 text-zinc-900 text-center">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-pink-500 mb-2 block italic">Exkluzív Válogatás</span>
+            <h1 className="text-3xl md:text-4xl font-black tracking-tighter leading-none mb-3 text-zinc-900">
               Apró örömök,<br/>nagy pillanatok.
             </h1>
-            <p className="text-[11px] md:text-xs text-zinc-500 font-medium mb-6 max-w-xs mx-auto leading-relaxed text-center">
+            <p className="text-[11px] md:text-xs text-zinc-500 font-medium mb-6 max-w-xs mx-auto leading-relaxed">
               Válogatott kincsek, kuponokkal fűszerezve. <br/> 
               Szerezd meg az akciós kedvezményeket!
             </p>
@@ -54,7 +54,7 @@ export default function Home() {
           {/* JOBB OLDAL - NEZU JÁTÉKBARLANG (Lila-pink kártya, középre igazítva) */}
           <div className="flex-1 flex justify-center pr-12">
             <div className="w-full max-w-[360px] bg-gradient-to-br from-purple-600 via-pink-500 to-purple-700 p-8 md:p-10 rounded-[40px] shadow-[0_15px_40px_rgba(168,85,247,0.25)] transform hover:scale-[1.01] transition-transform cursor-pointer group relative overflow-hidden border-4 border-white/20 text-center">
-              <div className="relative z-10 flex flex-col items-center">
+              <div className="relative z-10 flex flex-col items-center text-center">
                 <h2 className="text-white text-3xl md:text-4xl font-black italic tracking-tighter uppercase mb-1">
                   Nezu <br/> Játékbarlang!
                 </h2>
@@ -87,7 +87,6 @@ export default function Home() {
                 {cat.name}
               </span>
             </a>
-          </a>
           ))}
         </nav>
       </div>
