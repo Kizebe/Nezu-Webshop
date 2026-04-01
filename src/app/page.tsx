@@ -3,7 +3,7 @@
 import Header from '@/components/Header';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 
-// Betűtípusok stabil konfigurálása - EGYSZERI DEFINÍCIÓ
+// Betűtípusok stabil konfigurálása
 const feminineFont = Playfair_Display({ subsets: ['latin'], weight: ['400', '700'], style: ['italic'] });
 const masculineFont = Montserrat({ subsets: ['latin'], weight: ['700', '900'] });
 
@@ -63,11 +63,10 @@ export default function Home() {
                 Kattints ide
               </button>
             </div>
-
         </div>
       </div>
 
-      {/* 2. FEKETE MENÜ - Résmentesen az arany sáv alá kényszerítve */}
+      {/* 2. FEKETE MENÜ - Az arany sáv alá kényszerítve */}
       <Header />
 
       {/* 3. HERO BANNER */}
@@ -99,4 +98,35 @@ export default function Home() {
                   {games.map((game, i) => (
                     <button 
                       key={i}
-                      className="bg-black
+                      className="bg-black/20 hover:bg-white text-white hover:text-purple-700 py-3.5 px-4 rounded-2xl transition-all duration-300 backdrop-blur-md border border-white/10 flex flex-col items-start"
+                    >
+                      <span className={`${masculineFont.className} text-[9px] uppercase tracking-widest font-black mb-1 text-left`}>
+                        {game.name}
+                      </span>
+                      <span className="text-[7px] opacity-70 uppercase font-bold tracking-tighter">
+                        {game.status}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. TERMÉKRÁCS */}
+      <section className="max-w-[1600px] mx-auto px-6 py-12 bg-white">
+        <div className="flex items-center justify-between mb-16 px-10">
+            <div className="h-[1px] flex-1 bg-zinc-100"></div>
+            <h2 className={`${masculineFont.className} text-[10px] uppercase tracking-[0.5em] text-zinc-300 mx-10`}>Nezu Selection</h2>
+            <div className="h-[1px] flex-1 bg-zinc-100"></div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+          {[...Array(10)].map((_, i) => (
+            <div key={i} className="group cursor-pointer flex flex-col items-center">
+              <div className="aspect-[4/5] w-full bg-zinc-300/60 mb-5 relative overflow-hidden rounded-[2.5rem] border border-zinc-200 transition-all duration-700 group-hover:shadow-2xl group-hover:-translate-y-3">
+              </div>
+              <div className="text-center px-2">
+                <h3 className={`${masculineFont.className} text-[11px] text-zinc-800 leading-tight mb-1 uppercase tracking-tight`}>
