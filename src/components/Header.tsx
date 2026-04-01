@@ -5,7 +5,8 @@ import {
   Search, Menu,
   Percent, ChevronDown, 
   User, Heart,
-  ShoppingBag, Headset 
+  ShoppingBag, Headset,
+  Crown // Add Crown to import
 } from 'lucide-react';
 
 export default function Header() {
@@ -23,7 +24,7 @@ export default function Header() {
   return (
     <div className="w-full fixed top-0 z-50 bg-black">
       
-      {/* 1. MÓDOSÍTOTT VIP SÁV - 3 oszlopos tartalom */}
+      {/* 1. VIP SÁV */}
       <div className="bg-[#D4AF37] w-full py-2 flex items-center">
         <div className="max-w-[1600px] mx-auto w-full px-6 grid grid-cols-3 items-center">
           
@@ -33,10 +34,14 @@ export default function Header() {
             </span>
           </div>
 
+          {/* KÖZÉP - Gombbá alakítva, hozzáadva a pici koronát */}
           <div className="text-center">
-            <span className="text-black text-[10px] uppercase tracking-[0.15em] font-black">
-              Belépés csak Tagoknak!
-            </span>
+            {/* The existing hover styles: text color, drop shadow, scale, added flex for alignment */}
+            <button className="flex items-center justify-center gap-1.5 text-black text-[10px] uppercase tracking-[0.15em] font-black transition-all duration-300 hover:text-[#FFFDD0] hover:scale-105 hover:drop-shadow-[0_0_8px_rgba(255,253,208,0.8)] focus:outline-none">
+              <span>Belépés csak Tagoknak!</span>
+              {/* Add small crown after the text */}
+              <Crown size={12} className="shrink-0" />
+            </button>
           </div>
 
           <div className="text-right flex items-center justify-end gap-3">
@@ -99,7 +104,7 @@ export default function Header() {
                {/* Kattintás bárhová máshová bezárja a menüt */}
                <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)}></div>
                
-               {/* A lenyíló lista - Most már látszódnia kell! */}
+               {/* A lenyíló lista */}
                <div className="absolute top-full left-0 mt-3 w-64 bg-black border border-gray-800 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-50 py-2">
                  <div className="px-4 py-2 text-[10px] text-gray-500 border-b border-gray-900 mb-2 tracking-widest">NAVIGÁCIÓ</div>
                  {menuItems.map((item, idx) => (
