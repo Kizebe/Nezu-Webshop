@@ -3,33 +3,30 @@
 import { useState } from 'react';
 import { 
   Search, Menu, Percent, ChevronDown, 
-  User, Heart, ShoppingBag, Headset, X 
+  User, Heart, ShoppingBag, Headset 
 } from 'lucide-react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // A menüpontok közös listája a pontos sorrendhez
   const menuItems = [
     { name: 'Gyerekruházat', href: '#' },
     { name: 'Otthon és lakberendezés', href: '#' },
     { name: 'Pet Shop', href: '#', icon: '🐾' },
     { name: 'BBQ & Whiskey esszenciák', href: '#' },
-    { name: 'Ajándéktárgyak', href: '#' }, // Az új menüpont
+    { name: 'Ajándéktárgyak', href: '#' },
     { name: 'Kiárusítás', href: '#', isSale: true },
   ];
 
   return (
     <div className="w-full fixed top-0 z-50 bg-black">
-      {/* ARANY BANNER */}
       <div className="bg-[#D4AF37] text-black text-[10px] py-1 text-center font-bold uppercase tracking-[0.2em]">
         Nezu Protocol - Member Access Only
       </div>
 
       <header className="border-b border-gray-800">
-        {/* FELSŐ SOR: Logo, Kereső, Funkciók */}
         <div className="flex items-center justify-between px-6 py-4 gap-8">
-          <div className="text-4xl font-black italic tracking-tighter whitespace-nowrap">
+          <div className="text-4xl font-black italic tracking-tighter whitespace-nowrap text-white">
             Nezu.hu
           </div>
           
@@ -59,10 +56,9 @@ export default function Header() {
           </div>
         </div>
 
-        {/* MENÜSOR: Teljes szélesség, megnövelt betűméret */}
-{/* MENÜSOR javított verziója */}
-<nav className="flex items-center justify-between px-8 py-3 whitespace-nowrap text-[12.5px] uppercase font-bold border-t border-gray-900 bg-black relative overflow-visible">          
-          {/* 1. Kategóriák Dropdown (Bal oldalon) */}
+        {/* A JAVÍTOTT NAV SÁV (overflow-visible az 'auto' helyett) */}
+        <nav className="flex items-center justify-between px-8 py-3 whitespace-nowrap text-[12.5px] uppercase font-bold border-t border-gray-900 bg-black relative overflow-visible">
+          
           <div className="relative">
             <button 
               onClick={() => setIsOpen(!isOpen)}
@@ -71,11 +67,13 @@ export default function Header() {
               <Menu size={18} /> Kategóriák
             </button>
             
-            {/* LENYÍLÓ MENÜ: Tartalmazza az összes többi menüpontot is */}
             {isOpen && (
               <>
+                {/* Kattintás bárhová máshová bezárja a menüt */}
                 <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)}></div>
-                <div className="absolute top-full left-0 mt-3 w-64 bg-black border border-gray-800 shadow-2xl z-50 py-2">
+                
+                {/* A lenyíló lista - Most már látszódnia kell! */}
+                <div className="absolute top-full left-0 mt-3 w-64 bg-black border border-gray-800 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-50 py-2">
                   <div className="px-4 py-2 text-[10px] text-gray-500 border-b border-gray-900 mb-2 tracking-widest">NAVIGÁCIÓ</div>
                   {menuItems.map((item, idx) => (
                     <a 
@@ -94,7 +92,6 @@ export default function Header() {
             )}
           </div>
 
-          {/* VÍZSZINTES MENÜPONTOK (A listából generálva) */}
           {menuItems.map((item, idx) => (
             <a 
               key={idx} 
@@ -108,8 +105,7 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Játék a kedvezményekért sáv */}
-        <div className="bg-[#0a0a0a] border-t border-green-900/10 py-1 text-center">
+        <div className="bg-[#0a0a0a] border-t border-green-900/10 py-1 text-center text-white">
           <a href="/game" className="text-[10px] text-green-500 tracking-[0.4em] font-bold animate-pulse uppercase">
             ⚡ Játék a kedvezményekért ⚡
           </a>
