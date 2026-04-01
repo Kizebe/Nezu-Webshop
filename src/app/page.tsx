@@ -15,11 +15,11 @@ export default function Home() {
     { name: 'Rituálék', status: 'Secret' },
   ];
 
+  // overflow-hidden eltávolítva a main-ről, így az oldal lefelé görgethető
   return (
-    {/* overflow-hidden eltávolítva, az oldal lefelé görgethető */}
     <main className="bg-white min-h-screen pt-48 pb-0 relative text-zinc-900">
       
-      {/* A Te saját, már VIP sávot tartalmazó Header-ed */}
+      {/* A Te saját, VIP sávot tartalmazó Header-ed */}
       <Header />
 
       {/* 1. HERO BANNER */}
