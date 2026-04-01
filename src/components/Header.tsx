@@ -60,8 +60,8 @@ export default function Header() {
         </div>
 
         {/* MENÜSOR: Teljes szélesség, megnövelt betűméret */}
-        <nav className="flex items-center justify-between px-8 py-3 overflow-x-auto no-scrollbar whitespace-nowrap text-[12.5px] uppercase font-bold border-t border-gray-900 bg-black">
-          
+{/* MENÜSOR javított verziója */}
+<nav className="flex items-center justify-between px-8 py-3 whitespace-nowrap text-[12.5px] uppercase font-bold border-t border-gray-900 bg-black relative overflow-visible">          
           {/* 1. Kategóriák Dropdown (Bal oldalon) */}
           <div className="relative">
             <button 
