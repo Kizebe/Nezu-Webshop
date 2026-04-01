@@ -130,3 +130,14 @@ export default function Home() {
               </div>
               <div className="text-center px-2">
                 <h3 className={`${masculineFont.className} text-[11px] text-zinc-800 leading-tight mb-1 uppercase tracking-tight`}>
+                  Nezu Item #{i+1}
+                </h3>
+                <span className="text-lg font-black text-zinc-900 italic tracking-tighter">9.990 Ft</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
