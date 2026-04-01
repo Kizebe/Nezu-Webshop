@@ -1,13 +1,3 @@
-Értettem. Megkaptam az eredeti kódodat. **Kizárólag** ezt módosítom.
-
-A kért változtatások:
-1.  Az arany sávot ("Nezu Protocol - Member Access Only") megnövelem.
-2.  Kicserélem a tartalmát a kért 3 oszlopos VIP szövegre és a gombra.
-3.  Nem nyúlok semmi máshoz (sem a logóhoz, sem a keresőhöz, sem a lenyíló menüdhöz, sem a "Játék a kedvezményekért" sávhoz).
-
-Itt a módosított, pontos kódod:
-
-```tsx
 'use client';
 
 import { useState } from 'react';
@@ -33,8 +23,8 @@ export default function Header() {
   return (
     <div className="w-full fixed top-0 z-50 bg-black">
       
-      {/* 1. MÓDOSÍTOTT VIP SÁV - Fix magasság, 3 oszlopos tartalom */}
-      <div className="bg-[#D4AF37] h-10 w-full flex items-center border-b border-black/10">
+      {/* 1. MÓDOSÍTOTT VIP SÁV - 3 oszlopos tartalom */}
+      <div className="bg-[#D4AF37] w-full py-2 flex items-center">
         <div className="max-w-[1600px] mx-auto w-full px-6 grid grid-cols-3 items-center">
           
           <div className="text-left">
@@ -152,4 +142,3 @@ export default function Header() {
     </div>
   );
 }
-```
