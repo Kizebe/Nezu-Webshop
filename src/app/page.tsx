@@ -16,15 +16,17 @@ export default function Home() {
   ];
 
   return (
-    {/* overflow-hidden eltávolítva, így az oldal görgethetővé vált */}
+    {/* overflow-hidden eltávolítva, az oldal lefelé görgethető */}
     <main className="bg-white min-h-screen pt-48 pb-0 relative text-zinc-900">
       
+      {/* A Te saját, már VIP sávot tartalmazó Header-ed */}
       <Header />
 
       {/* 1. HERO BANNER */}
       <section className="w-full bg-white pt-8 pb-16 border-b border-zinc-50 relative">
         <div className="max-w-[1550px] mx-auto px-12 flex flex-row items-center justify-between h-[220px] md:h-[260px]">
           
+          {/* BAL OLDAL - Apró örömök */}
           <div className="flex-[1.2] pl-20 text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-pink-500 mb-2 block italic">Pure & Effective</span>
             <h1 className={`${feminineFont.className} text-4xl md:text-[4.2rem] text-zinc-900 leading-[1.05] mb-7 italic`}>
@@ -37,6 +39,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* JOBB OLDAL - Játékbarlang */}
           <div className="flex-1 flex justify-center pr-12 scale-90">
             <div className="w-full max-w-[460px] bg-gradient-to-br from-purple-700 to-pink-500 p-8 rounded-[50px] shadow-2xl relative overflow-hidden border-4 border-white/20 text-center">
               <div className="relative z-10 flex flex-col items-center">
