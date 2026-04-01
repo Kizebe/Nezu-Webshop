@@ -1,4 +1,5 @@
-// src/app/page.tsx
+'use client'; // Ez kötelező az interaktív stílusok és animációk miatt
+
 import Header from '@/components/Header';
 
 export default function Home() {
@@ -12,45 +13,47 @@ export default function Home() {
 
   return (
     <main className="bg-white min-h-screen pt-44 pb-10">
-      {/* 100% BIZTOS ANIMÁCIÓS BLOKK */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      {/* 100% BIZTOS STÍLUS ÉS ANIMÁCIÓ DEFINÍCIÓ */}
+      <style>{`
         @keyframes softGlow {
           0% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.2); border-color: #D4AF37; }
-          50% { box-shadow: 0 0 18px rgba(212, 175, 55, 0.35); border-color: #f3e8ff; }
+          50% { box-shadow: 0 0 18px rgba(212, 175, 55, 0.4); border-color: #ffffff; }
           100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.2); border-color: #D4AF37; }
         }
         .animate-soft-glow {
           animation: softGlow 4.5s infinite ease-in-out;
         }
-      `}} />
+      `}</style>
 
       <Header />
 
-      {/* 1. HERO BANNER - Középre igazított, 4cm behúzás (pl-32) */}
-      <section className="w-full bg-white pt-2 pb-0 border-b border-zinc-50">
-        <div className="max-w-[1500px] mx-auto px-12 flex flex-row items-center justify-center gap-12 h-[220px] md:h-[300px]">
+      {/* 1. HERO BANNER - Alacsonyabb, 4cm behúzás (pl-32) */}
+      <section className="w-full bg-white pt-2 pb-0 border-b border-zinc-100">
+        <div className="max-w-[1500px] mx-auto px-12 flex flex-row items-center justify-center gap-12 h-[220px] md:h-[280px]">
           
           {/* BAL OLDAL - Mélyen beljebb (pl-32) és középen */}
           <div className="flex-1 pl-32 text-center">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-pink-500 mb-2 block italic">Varázslatos Világ</span>
-            <h1 className="text-3xl md:text-4xl font-black tracking-tighter leading-none mb-3 text-zinc-900">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-pink-500 mb-2 block italic text-center">Exkluzív Válogatás</span>
+            <h1 className="text-3xl md:text-4xl font-black tracking-tighter leading-none mb-3 text-zinc-900 text-center">
               Apró örömök,<br/>nagy pillanatok.
             </h1>
-            <p className="text-[11px] md:text-xs text-zinc-500 font-medium mb-6 max-w-xs mx-auto leading-relaxed">
+            <p className="text-[11px] md:text-xs text-zinc-500 font-medium mb-6 max-w-xs mx-auto leading-relaxed text-center">
               Válogatott kincsek, kuponokkal fűszerezve. <br/> 
               Szerezd meg az akciós kedvezményeket!
             </p>
-            <button className="bg-black text-white px-8 py-2.5 text-[9px] font-black uppercase tracking-widest hover:bg-zinc-800 transition-all rounded-full">
-              Kuponok begyűjtése
-            </button>
+            <div className="flex justify-center">
+              <button className="bg-black text-white px-8 py-2.5 text-[9px] font-black uppercase tracking-widest hover:bg-zinc-800 transition-all rounded-full shadow-lg">
+                Kuponok begyűjtése
+              </button>
+            </div>
           </div>
 
           {/* ⚡ ALA / HONEYPOT HIDDEN TRIGGER ⚡ */}
-          <div className="w-4 h-4 opacity-0 pointer-events-none">🐾</div>
+          <div className="w-4 h-4 opacity-0 pointer-events-none select-none">🐾</div>
 
-          {/* JOBB OLDAL - NEZU JÁTÉKBARLANG (Középre igazítva) */}
+          {/* JOBB OLDAL - NEZU JÁTÉKBARLANG (Lila-pink kártya, középre igazítva) */}
           <div className="flex-1 flex justify-center pr-12">
-            <div className="w-full max-w-[360px] bg-gradient-to-br from-purple-600 to-pink-600 p-8 md:p-10 rounded-[40px] shadow-[0_15px_40px_rgba(168,85,247,0.2)] transform hover:scale-[1.01] transition-transform cursor-pointer group relative overflow-hidden border-4 border-white/20 text-center">
+            <div className="w-full max-w-[360px] bg-gradient-to-br from-purple-600 via-pink-500 to-purple-700 p-8 md:p-10 rounded-[40px] shadow-[0_15px_40px_rgba(168,85,247,0.25)] transform hover:scale-[1.01] transition-transform cursor-pointer group relative overflow-hidden border-4 border-white/20 text-center">
               <div className="relative z-10 flex flex-col items-center">
                 <h2 className="text-white text-3xl md:text-4xl font-black italic tracking-tighter uppercase mb-1">
                   Nezu <br/> Játékbarlang!
@@ -69,7 +72,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. KATEGÓRIA SÁV - Sötétlila háttér, Pulzáló lila gombokkal */}
+      {/* 2. KATEGÓRIA SÁV - Sötétlila háttér, Játékbarlang-lila gombokkal */}
       <div className="w-full bg-purple-950 border-y border-purple-900 py-6">
         <nav className="max-w-[1600px] mx-auto px-8 flex items-center justify-between gap-4">
           {categories.map((cat, idx) => (
@@ -84,11 +87,12 @@ export default function Home() {
                 {cat.name}
               </span>
             </a>
+          </a>
           ))}
         </nav>
       </div>
 
-      {/* 3. TERMÉKRÁCS - Sötétebb szürke kockákkal (zinc-300) */}
+      {/* 3. TERMÉKRÁCS - Sötétebb szürke kockák (zinc-300) */}
       <div className="max-w-[1600px] mx-auto px-6 py-20 bg-white">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 md:gap-14">
           {[...Array(15)].map((_, i) => (
