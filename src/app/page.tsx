@@ -15,7 +15,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-white min-h-screen pt-48 pb-10 overflow-hidden relative text-zinc-900">
+    <main className="bg-white min-h-screen pt-60 pb-10 overflow-hidden relative text-zinc-900">
       <style>{`
         @keyframes goldShine {
           0% { background-position: -200% center; opacity: 0.9; }
@@ -27,51 +27,55 @@ export default function Home() {
           background-size: 200% auto;
           animation: goldShine 6s infinite linear;
         }
-        /* KRITIKUS JAVÍTÁS: A fekete fejlécet az arany sáv alá kényszerítjük */
-        header {
-          top: 36px !important;
+
+        /* ⛔ KRITIKUS JAVÍTÁS: A fekete menüsort (Header) kényszerítjük lejjebb ⛔ */
+        header, .fixed.top-0 {
+          top: 40px !important; /* Pontosan az arany sáv magassága alá toljuk */
+          transition: top 0.3s ease;
         }
       `}</style>
 
-      {/* 1. AZ EGYETLEN VIP ARANY SÁV - 36px magas (h-9) */}
-      <div className="fixed top-0 left-0 w-full h-9 z-[110] animate-gold-vip shadow-sm flex items-center border-b border-black/5">
+      {/* 1. AZ EGYETLEN VIP ARANY SÁV - 40px magas (h-10) */}
+      <div className="fixed top-0 left-0 w-full h-10 z-[120] animate-gold-vip shadow-md flex items-center border-b border-black/10">
         <div className="max-w-[1600px] mx-auto w-full px-10 grid grid-cols-3 items-center">
             
             {/* BAL OLDAL */}
             <div className="text-left">
-              <span className={`${masculineFont.className} text-black text-[9px] uppercase tracking-[0.3em] font-black`}>
+              <span className={`${masculineFont.className} text-black text-[10px] uppercase tracking-[0.4em] font-black`}>
                 Nezu VIP Program
               </span>
             </div>
 
             {/* KÖZÉP */}
             <div className="text-center">
-              <span className={`${masculineFont.className} text-black text-[9px] uppercase tracking-[0.15em] font-black opacity-90`}>
+              <span className={`${masculineFont.className} text-black text-[10px] uppercase tracking-[0.15em] font-black opacity-90`}>
                 Belépés csak Tagoknak!
               </span>
             </div>
 
             {/* JOBB OLDAL */}
             <div className="text-right flex items-center justify-end gap-3">
-              <span className={`${masculineFont.className} text-black/70 text-[8px] uppercase tracking-wider font-bold`}>
+              <span className={`${masculineFont.className} text-black/70 text-[9px] uppercase tracking-wider font-bold`}>
                 Szeretnél VIP tag lenni?
               </span>
-              <button className={`${masculineFont.className} bg-black text-[#D4AF37] text-[8px] px-2.5 py-1 rounded-sm font-black uppercase hover:bg-zinc-800 transition-all tracking-tighter shadow-sm`}>
+              <button className={`${masculineFont.className} bg-black text-[#D4AF37] text-[9px] px-3 py-1 rounded-sm font-black uppercase hover:bg-zinc-800 transition-all tracking-tighter shadow-lg`}>
                 Kattints ide
               </button>
             </div>
         </div>
       </div>
 
+      {/* 2. FEKETE MENÜSOR (Header) - A fenti CSS kényszeríti lejjebb */}
       <Header />
 
-      {/* 2. HERO BANNER - Megfelelő távolság és arányok */}
-      <section className="w-full bg-white pt-20 pb-12 border-b border-zinc-50 relative">
-        <div className="max-w-[1550px] mx-auto px-12 flex flex-row items-center justify-between h-[220px] md:h-[250px]">
+      {/* 3. HERO BANNER - pt-60 miatt tisztes távolságban a menüktől */}
+      <section className="w-full bg-white pt-10 pb-16 border-b border-zinc-50 relative">
+        <div className="max-w-[1550px] mx-auto px-12 flex flex-row items-center justify-between h-[220px] md:h-[260px]">
           
+          {/* BAL OLDAL - "Apró örömök" */}
           <div className="flex-[1.2] pl-20 text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-pink-500 mb-2 block italic">Pure & Effective Logistics</span>
-            <h1 className={`${feminineFont.className} text-4xl md:text-[4rem] text-zinc-900 leading-[1.05] mb-7 italic`}>
+            <h1 className={`${feminineFont.className} text-4xl md:text-[4.2rem] text-zinc-900 leading-[1.05] mb-7 italic`}>
               Apró örömök,<br/>nagy pillanatok.
             </h1>
             <div className="flex justify-center">
@@ -81,6 +85,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* JOBB OLDAL - JÁTÉKBARLANG */}
           <div className="flex-1 flex justify-center pr-12 scale-90">
             <div className="w-full max-w-[460px] bg-gradient-to-br from-purple-700 to-pink-500 p-8 rounded-[50px] shadow-2xl relative overflow-hidden border-4 border-white/20 text-center">
               <div className="relative z-10 flex flex-col items-center">
@@ -112,7 +117,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. TERMÉKRÁCS */}
+      {/* 4. TERMÉKRÁCS */}
       <section className="max-w-[1600px] mx-auto px-6 py-12 bg-white">
         <div className="flex items-center justify-between mb-16 px-10">
             <div className="h-[1px] flex-1 bg-zinc-100"></div>
