@@ -15,15 +15,13 @@ export default function Home() {
     { name: 'Rituálék', status: 'Secret' },
   ];
 
-  // overflow-hidden eltávolítva a main-ről, így az oldal lefelé görgethető
   return (
     <main className="bg-white min-h-screen pt-48 pb-0 relative text-zinc-900">
       
-      {/* A Te saját, VIP sávot tartalmazó Header-ed */}
       <Header />
 
-      {/* 1. HERO BANNER */}
-      <section className="w-full bg-white pt-8 pb-16 border-b border-zinc-50 relative">
+      {/* 1. HERO BANNER - Megnövelt felső térköz (pt-[70px]), csökkentett alsó térköz (pb-8) a feljebb húzáshoz */}
+      <section className="w-full bg-white pt-[70px] pb-8 border-b border-zinc-50 relative">
         <div className="max-w-[1550px] mx-auto px-12 flex flex-row items-center justify-between h-[220px] md:h-[260px]">
           
           {/* BAL OLDAL - Apró örömök */}
@@ -70,11 +68,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. TERMÉKRÁCS - 20 db, 4 sorban */}
-      <section className="max-w-[1600px] mx-auto px-6 py-12 bg-white">
-        <div className="flex items-center justify-between mb-16 px-10">
+      {/* 2. TERMÉKRÁCS - Csökkentett felső térköz (pt-8) és alsó margó a cím alatt (mb-10) */}
+      <section className="max-w-[1600px] mx-auto px-6 pt-8 pb-12 bg-white">
+        <div className="flex items-center justify-between mb-10 px-10">
             <div className="h-[1px] flex-1 bg-zinc-100"></div>
-            <h2 className={`${masculineFont.className} text-[10px] uppercase tracking-[0.5em] text-zinc-300 mx-10`}>Nezu Selection</h2>
+            {/* Arany színű Nezu Selection felirat */}
+            <h2 className={`${masculineFont.className} text-[10px] uppercase tracking-[0.5em] text-[#D4AF37] mx-10`}>Nezu Selection</h2>
             <div className="h-[1px] flex-1 bg-zinc-100"></div>
         </div>
 
@@ -94,8 +93,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. KÖTELEZŐ TÁJÉKOZTATÓ ELEMEK - Puritán, formázatlan PC stílus */}
-      <footer className="w-full bg-[#f4f4f4] border-t border-[#dddddd] mt-20 p-10 font-serif text-black text-[14px]">
+      {/* 3. KÖTELEZŐ TÁJÉKOZTATÓ ELEMEK */}
+      <footer className="w-full bg-[#f4f4f4] border-t border-[#dddddd] mt-10 p-10 font-serif text-black text-[14px]">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
           
           {/* 1. Oszlop */}
