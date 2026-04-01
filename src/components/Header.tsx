@@ -6,7 +6,7 @@ import {
   Percent, ChevronDown, 
   User, Heart,
   ShoppingBag, Headset,
-  Crown // Add Crown to import
+  Crown 
 } from 'lucide-react';
 
 export default function Header() {
@@ -26,7 +26,8 @@ export default function Header() {
       
       {/* 1. VIP SÁV */}
       <div className="bg-[#D4AF37] w-full py-2 flex items-center">
-        <div className="max-w-[1600px] mx-auto w-full px-6 grid grid-cols-3 items-center">
+        {/* ITT A MÓDOSÍTÁS: px-[5cm] a két szélén lévő 5-5 cm margóért, a grid-cols-3 pedig szimmetrikusan elosztja a maradékot */}
+        <div className="max-w-[1600px] mx-auto w-full px-[5cm] grid grid-cols-3 items-center">
           
           <div className="text-left">
             <span className="text-black text-[10px] uppercase tracking-[0.4em] font-black">
@@ -34,12 +35,9 @@ export default function Header() {
             </span>
           </div>
 
-          {/* KÖZÉP - Gombbá alakítva, hozzáadva a pici koronát */}
-          <div className="text-center">
-            {/* The existing hover styles: text color, drop shadow, scale, added flex for alignment */}
+          <div className="text-center flex justify-center">
             <button className="flex items-center justify-center gap-1.5 text-black text-[10px] uppercase tracking-[0.15em] font-black transition-all duration-300 hover:text-[#FFFDD0] hover:scale-105 hover:drop-shadow-[0_0_8px_rgba(255,253,208,0.8)] focus:outline-none">
               <span>Belépés csak Tagoknak!</span>
-              {/* Add small crown after the text */}
               <Crown size={12} className="shrink-0" />
             </button>
           </div>
