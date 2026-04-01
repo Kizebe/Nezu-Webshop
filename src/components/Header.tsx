@@ -3,11 +3,21 @@
 import { useState } from 'react';
 import { 
   Search, Menu, Percent, ChevronDown, 
-  User, Heart, ShoppingBag, Headset 
+  User, Heart, ShoppingBag, Headset, X 
 } from 'lucide-react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+
+  // A menüpontok közös listája a pontos sorrendhez
+  const menuItems = [
+    { name: 'Gyerekruházat', href: '#' },
+    { name: 'Otthon és lakberendezés', href: '#' },
+    { name: 'Pet Shop', href: '#', icon: '🐾' },
+    { name: 'BBQ & Whiskey esszenciák', href: '#' },
+    { name: 'Ajándéktárgyak', href: '#' }, // Az új menüpont
+    { name: 'Kiárusítás', href: '#', isSale: true },
+  ];
 
   return (
     <div className="w-full fixed top-0 z-50 bg-black">
@@ -19,79 +29,83 @@ export default function Header() {
       <header className="border-b border-gray-800">
         {/* FELSŐ SOR: Logo, Kereső, Funkciók */}
         <div className="flex items-center justify-between px-6 py-4 gap-8">
-          
-          {/* LOGO - Kétszer akkora (text-4xl) */}
           <div className="text-4xl font-black italic tracking-tighter whitespace-nowrap">
             Nezu.hu
           </div>
           
-          {/* KERESŐ - Nem teljes szélességű (max-w-md), kis hellyel a logó után */}
           <div className="flex-1 max-w-xl relative ml-4">
             <input 
               type="text" 
               placeholder="Keresés..." 
-              className="w-full bg-[#1a1a1a] border border-gray-700 py-2 px-10 text-sm rounded-sm focus:outline-none focus:border-green-600"
+              className="w-full bg-[#1a1a1a] border border-gray-700 py-2 px-10 text-sm rounded-sm focus:outline-none focus:border-green-600 text-white"
             />
             <Search className="absolute left-3 top-2.5 text-gray-500 w-4 h-4" />
           </div>
 
-          {/* FUNKCIÓ IKONOK (Shein stílus) */}
           <div className="flex items-center gap-6 text-gray-300">
             <div className="flex flex-col items-center cursor-pointer hover:text-white">
               <User size={20} />
-              <span className="text-[9px] mt-1">Belépés</span>
-            </div>
-            <div className="flex flex-col items-center cursor-pointer hover:text-white">
-              <Heart size={20} />
-              <span className="text-[9px] mt-1">Kedvencek</span>
+              <span className="text-[9px] mt-1 font-bold uppercase">Belépés</span>
             </div>
             <div className="flex flex-col items-center cursor-pointer hover:text-white relative">
               <ShoppingBag size={20} />
-              <span className="text-[9px] mt-1">Kosár</span>
+              <span className="text-[9px] mt-1 font-bold uppercase">Kosár</span>
               <span className="absolute -top-1 -right-1 bg-green-600 text-[8px] px-1 rounded-full text-white font-bold">0</span>
             </div>
             <div className="flex flex-col items-center cursor-pointer hover:text-white">
               <Headset size={20} />
-              <span className="text-[9px] mt-1">Kapcsolat</span>
+              <span className="text-[9px] mt-1 font-bold uppercase">Kapcsolat</span>
             </div>
           </div>
         </div>
 
-        {/* MENÜSOR: Teljes szélesség, +10% betűméret, egyenlő távolság */}
-        <nav className="flex items-center justify-between px-8 py-3 overflow-x-auto no-scrollbar whitespace-nowrap text-[12.5px] uppercase font-bold border-t border-gray-900">
+        {/* MENÜSOR: Teljes szélesség, megnövelt betűméret */}
+        <nav className="flex items-center justify-between px-8 py-3 overflow-x-auto no-scrollbar whitespace-nowrap text-[12.5px] uppercase font-bold border-t border-gray-900 bg-black">
           
-          {/* 1. Kategóriák Dropdown */}
+          {/* 1. Kategóriák Dropdown (Bal oldalon) */}
           <div className="relative">
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center gap-1 transition-colors hover:text-green-500"
+              className="flex items-center gap-2 transition-colors hover:text-green-500 text-white"
             >
-              <Menu size={16} /> Kategóriák <ChevronDown size={14} className={isOpen ? 'rotate-180' : ''} />
+              <Menu size={18} /> Kategóriák
             </button>
+            
+            {/* LENYÍLÓ MENÜ: Tartalmazza az összes többi menüpontot is */}
             {isOpen && (
-              <div className="absolute top-full left-0 mt-3 w-56 bg-black border border-gray-800 shadow-2xl z-[60]">
-                <ul className="py-2 text-[11px]">
-                  <li className="px-4 py-3 hover:bg-zinc-900 border-b border-gray-900">Minden termék</li>
-                  <li className="px-4 py-3 hover:bg-zinc-900 border-b border-gray-900">Bestsellerek</li>
-                  <li className="px-4 py-3 hover:bg-zinc-900">Újdonságok</li>
-                </ul>
-              </div>
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)}></div>
+                <div className="absolute top-full left-0 mt-3 w-64 bg-black border border-gray-800 shadow-2xl z-50 py-2">
+                  <div className="px-4 py-2 text-[10px] text-gray-500 border-b border-gray-900 mb-2 tracking-widest">NAVIGÁCIÓ</div>
+                  {menuItems.map((item, idx) => (
+                    <a 
+                      key={idx} 
+                      href={item.href}
+                      className={`block px-5 py-3 hover:bg-zinc-900 transition-colors border-l-2 border-transparent hover:border-green-600 ${item.isSale ? 'text-red-500' : 'text-gray-200'}`}
+                    >
+                      <div className="flex items-center justify-between italic">
+                        <span>{item.name} {item.icon && <span className="ml-2">{item.icon}</span>}</span>
+                        {item.isSale && <Percent size={12} />}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </>
             )}
           </div>
 
-          <a href="#" className="hover:text-green-500">Gyerekruházat</a>
-          <a href="#" className="hover:text-green-500">Otthon és lakberendezés</a>
-          
-          <div className="flex items-center gap-1 group cursor-pointer">
-            <a href="#" className="group-hover:text-green-500 transition-colors">Pet Shop</a>
-            <span className="text-sm opacity-70 group-hover:opacity-100">🐾</span>
-          </div>
-
-          <a href="#" className="hover:text-green-500">BBQ & Whiskey esszenciák</a>
-          
-          <a href="#" className="text-red-500 flex items-center gap-1">
-            Kiárusítás <Percent size={14} />
-          </a>
+          {/* VÍZSZINTES MENÜPONTOK (A listából generálva) */}
+          {menuItems.map((item, idx) => (
+            <a 
+              key={idx} 
+              href={item.href} 
+              className={`transition-colors hover:text-green-500 flex items-center gap-1 ${item.isSale ? 'text-red-500' : 'text-gray-100'}`}
+            >
+              {item.name}
+              {item.icon && <span className="text-sm">{item.icon}</span>}
+              {item.isSale && <Percent size={14} />}
+            </a>
+          ))}
         </nav>
 
         {/* Játék a kedvezményekért sáv */}
