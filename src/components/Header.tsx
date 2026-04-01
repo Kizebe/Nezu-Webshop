@@ -1,12 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import { Playfair_Display } from 'next/font/google';
 import { 
   Search, Menu,
   Percent, ChevronDown, 
   User, Heart,
-  ShoppingBag, Headset 
+  ShoppingBag, Headset,
+  Crown 
 } from 'lucide-react';
+
+const feminineFont = Playfair_Display({ subsets: ['latin'], weight: ['400', '700'], style: ['italic'] });
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,9 +27,9 @@ export default function Header() {
   return (
     <div className="w-full fixed top-0 z-50 bg-black">
       
-      {/* 1. MÓDOSÍTOTT VIP SÁV - 3 oszlopos tartalom */}
+      {/* 1. VIP SÁV */}
       <div className="bg-[#D4AF37] w-full py-2 flex items-center">
-        <div className="max-w-[1600px] mx-auto w-full px-6 grid grid-cols-3 items-center">
+        <div className="max-w-[1600px] mx-auto w-full px-[5cm] grid grid-cols-3 items-center">
           
           <div className="text-left">
             <span className="text-black text-[10px] uppercase tracking-[0.4em] font-black">
@@ -33,10 +37,10 @@ export default function Header() {
             </span>
           </div>
 
-          {/* KÖZÉP - Gombbá alakítva ragyogó hover effekttel */}
-          <div className="text-center">
-            <button className="text-black text-[10px] uppercase tracking-[0.15em] font-black transition-all duration-300 hover:text-[#FFFDD0] hover:scale-105 hover:drop-shadow-[0_0_8px_rgba(255,253,208,0.8)] focus:outline-none">
-              Belépés csak Tagoknak!
+          <div className="text-center flex justify-center">
+            <button className="flex items-center justify-center gap-1.5 text-black text-[10px] uppercase tracking-[0.15em] font-black transition-all duration-300 hover:text-[#FFFDD0] hover:scale-105 hover:drop-shadow-[0_0_8px_rgba(255,253,208,0.8)] focus:outline-none">
+              <span>Belépés csak Tagoknak!</span>
+              <Crown size={12} className="shrink-0" />
             </button>
           </div>
 
@@ -133,10 +137,10 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* JAVÍTOTT Játék a kedvezményekért sáv */}
+        {/* HÍRLEVÉL SÁV - CSAK a betűtípus lett hozzáfűzve az eredeti formázáshoz */}
         <div className="bg-[#0a0a0a] border-t border-green-900/10 py-2.5 text-center text-white">
-          <a href="/game" className="text-[12px] text-green-500 tracking-[0.5em] font-black animate-pulse uppercase">
-            ⚡ Játék a kedvezményekért ⚡
+          <a href="#newsletter" className={`${feminineFont.className} text-[12px] text-green-500 tracking-[0.2em] font-black animate-pulse uppercase`}>
+            íratkozz fel a hírlevelünkre, ne maradj le a kedvezményekről!
           </a>
         </div>
       </header>
