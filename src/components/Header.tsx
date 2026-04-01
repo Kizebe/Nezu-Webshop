@@ -105,11 +105,12 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="bg-[#0a0a0a] border-t border-green-900/10 py-1 text-center text-white">
-          <a href="/game" className="text-[10px] text-green-500 tracking-[0.4em] font-bold animate-pulse uppercase">
-            ⚡ Játék a kedvezményekért ⚡
-          </a>
-        </div>
+        {/* JAVÍTOTT Játék a kedvezményekért sáv */}
+<div className="bg-[#0a0a0a] border-t border-green-900/10 py-2.5 text-center text-white"> {/* py-1 helyett 2.5 */}
+  <a href="/game" className="text-[12px] text-green-500 tracking-[0.5em] font-black animate-pulse uppercase"> {/* text-10 helyett 12 */}
+    ⚡ Játék a kedvezményekért ⚡
+  </a>
+</div>
       </header>
     </div>
   );
