@@ -3,7 +3,6 @@
 import Header from '@/components/Header';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 
-// Betűtípusok stabil konfigurálása
 const feminineFont = Playfair_Display({ subsets: ['latin'], weight: ['400', '700'], style: ['italic'] });
 const masculineFont = Montserrat({ subsets: ['latin'], weight: ['700', '900'] });
 
@@ -29,32 +28,28 @@ export default function Home() {
           animation: goldShine 6s infinite linear;
         }
 
-        /* 🎯 SEBÉSZI ILLESZKEDÉS: A fekete menü (Header) hajszálpontosan az arany sáv alatt kezdődik */
-        header, [class*="fixed top-0"] {
-          top: 40px !important; 
-          height: 80px !important; 
+        /* Megakadályozzuk a rálógást: a Header pontosan az arany sáv (40px) alatt kezdődik */
+        #header-wrapper > * {
+          top: 40px !important;
         }
       `}</style>
 
-      {/* 1. VIP ARANY SÁV - Fix 40px magasság (h-10) */}
-      <div className="fixed top-0 left-0 w-full h-10 z-[150] animate-gold-vip flex items-center shadow-sm">
+      {/* 1. VIP ARANY SÁV - Fix 40px magasság */}
+      <div className="fixed top-0 left-0 w-full h-[40px] z-[150] animate-gold-vip flex items-center shadow-sm">
         <div className="max-w-[1600px] mx-auto w-full px-10 grid grid-cols-3 items-center">
             
-            {/* BAL OLDAL */}
             <div className="text-left">
-              <span className={`${masculineFont.className} text-black text-[9px] uppercase tracking-[0.4em] font-black`}>
+              <span className={`${masculineFont.className} text-black text-[10px] uppercase tracking-[0.4em] font-black`}>
                 Nezu VIP Program
               </span>
             </div>
 
-            {/* KÖZÉP */}
             <div className="text-center">
-              <span className={`${masculineFont.className} text-black text-[9px] uppercase tracking-[0.15em] font-black`}>
+              <span className={`${masculineFont.className} text-black text-[10px] uppercase tracking-[0.15em] font-black`}>
                 Belépés csak Tagoknak!
               </span>
             </div>
 
-            {/* JOBB OLDAL */}
             <div className="text-right flex items-center justify-end gap-3">
               <span className={`${masculineFont.className} text-black/70 text-[8px] uppercase tracking-wider font-bold`}>
                 Szeretnél VIP tag lenni?
@@ -66,8 +61,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 2. FEKETE MENÜ - Az arany sáv alá kényszerítve */}
-      <Header />
+      {/* 2. FEKETE MENÜ - A wrapper gondoskodik a pontos eltolásról */}
+      <div id="header-wrapper">
+        <Header />
+      </div>
 
       {/* 3. HERO BANNER */}
       <section className="w-full bg-white pt-12 pb-16 border-b border-zinc-50 relative">
